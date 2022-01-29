@@ -9,20 +9,19 @@
 </head>
 <body>
     <h1 class="titulo">código secreto</h1>
-  
+    <img src="background.jpg" alt="back">
     <main class="main">
-      <section class="form box">
-        <form action="">
-          <label for="input-texto">Solo letras minúsculas, sin acento</label>
-          <input class="text-input" type="text" name="input-texto" id="input-texto" placeholder="Ingrese el texto aqui">
+      <section class="form">
+          <textarea cols="30" rows="20" class="text-input" name="input-texto" id="input-texto" placeholder="Ingrese el texto aqui"></textarea>
+          <span>ℹ️ Solo letras minúsculas, sin acento</span> <br>
           <input class="btn" type="submit" value="encriptar!" id="btn-encriptar">
           <input class="btn" type="submit" value="desencriptar!" id="btn-desencriptar">
-        </form>
+
       </section>
     
-      <section class="msg box">
-        <h2 id="">Mensaje encriptada:</h2>
-        <input class="text-input" type="text" id="msg" readonly></input>
+      <section class="msg">
+        <h2>Mensaje encriptado:</h2>
+        <textarea class="msg-text" type="text" id="msg" readonly></textarea>
         <input class="btn" type="submit" value="copiar" id="btn-copy">
       </section>
     </main>

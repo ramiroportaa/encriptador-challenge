@@ -31,9 +31,11 @@ function encriptar(texto){
                     break;
             };
         };
+        msg.classList.remove("error");
         return codificado;
     }else{
-        return "ERROR: No se permiten MAYÚSCULAS, números, ni caracteres especiales";
+        msg.classList.add("error");
+        return "ERROR: No se permiten MAYÚSCULAS, números, ni caracteres especiales. Tampoco se puede encriptar un texto vacio.";
     }
 };
 
@@ -44,9 +46,12 @@ function desencriptar(texto){
                                     .replace(/ai/g, "a")
                                     .replace(/ober/g, "o")
                                     .replace(/ufat/g, "u");
+
+        msg.classList.remove("error");
         return desencriptado;    
     }else{
-        return "ERROR: No se permiten MAYÚSCULAS, números, ni caracteres especiales";
+        msg.classList.add("error");
+        return "ERROR: No se permiten MAYÚSCULAS, números, ni caracteres especiales. Tampoco se puede encriptar un texto vacio.";
     };
 };
 
