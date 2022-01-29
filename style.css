@@ -45,7 +45,6 @@ footer {
   flex-direction: row;
   position: relative;
   z-index: 2;
-  border: 5px solid red;
 }
 
 .titulo {
