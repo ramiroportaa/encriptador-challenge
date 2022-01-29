@@ -63,3 +63,9 @@ btnDesencriptar.addEventListener("click", (e)=>{
     var desencriptado = desencriptar(texto);
     msg.value = desencriptado;
 });
+
+btnCopy.addEventListener("click", (e)=>{
+    e.preventDefault();
+    msg.select();
+    navigator.clipboard.writeText(msg.value);
+});
