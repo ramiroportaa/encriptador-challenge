@@ -31,6 +31,7 @@ btnEncriptar.addEventListener("click", (e)=>{
     var texto = inputTexto.value;
     var encriptado = codificar(texto, claves, "encriptar");
     msg.value = encriptado;
+    inputTexto.focus();
 });
 
 btnDesencriptar.addEventListener("click", (e)=>{
@@ -38,6 +39,7 @@ btnDesencriptar.addEventListener("click", (e)=>{
     var texto = inputTexto.value;
     var desencriptado = codificar(texto, claves, "desencriptar");
     msg.value = desencriptado;
+    inputTexto.focus();
 });
 
 btnCopy.addEventListener("click", (e)=>{
