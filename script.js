@@ -3,33 +3,20 @@ const msg = document.querySelector("#msg");
 const btnEncriptar = document.querySelector("#btn-encriptar");
 const btnDesencriptar = document.querySelector("#btn-desencriptar");
 const btnCopy = document.querySelector("#btn-copy");
+const claves = {e: "enter", i: "imes", a: "ai", o: "ober", u: "ufat"}
 
 const regex = new RegExp("^[a-z\\s]+$");
 
-function encriptar(texto){
+function codificar(texto, claves, encriptarOdesencriptar){
     if (regex.test(texto)) {
-        let codificado = "";
-        for (let i=0; i<texto.length; i++) {
-            switch (texto[i]) {
-                case "a":
-                    codificado += "ai"
-                    break;
-                case "e":
-                    codificado += "enter"
-                    break;
-                case "i":
-                    codificado += "imes"
-                    break;
-                case "o":
-                    codificado += "ober"
-                    break;
-                case "u":
-                    codificado += "ufat"
-                    break;
-                default:
-                    codificado += texto[i]
-                    break;
-            };
+        let encriptar = encriptarOdesencriptar == "encriptar";
+        let codificado = texto;
+        for (const key in claves) {
+            if (Object.hasOwnProperty.call(claves, key)) {
+                const valor = claves[key];
+                const regex = new RegExp(encriptar ? key : valor, "g");
+                codificado = codificado.replace(regex, encriptar ? valor : key);
+            }
         };
         msg.classList.remove("error");
         return codificado;
@@ -39,33 +26,17 @@ function encriptar(texto){
     }
 };
 
-function desencriptar(texto){
-    if (regex.test(texto)) {
-        let desencriptado = texto.replace(/enter/g, "e")
-                                    .replace(/imes/g, "i")
-                                    .replace(/ai/g, "a")
-                                    .replace(/ober/g, "o")
-                                    .replace(/ufat/g, "u");
-
-        msg.classList.remove("error");
-        return desencriptado;    
-    }else{
-        msg.classList.add("error");
-        return "ERROR: No se permiten MAYÚSCULAS, números, ni caracteres especiales. Tampoco se puede encriptar un texto vacio.";
-    };
-};
-
 btnEncriptar.addEventListener("click", (e)=>{
     e.preventDefault();
     var texto = inputTexto.value;
-    var encriptado = encriptar(texto);
+    var encriptado = codificar(texto, claves, "encriptar");
     msg.value = encriptado;
 });
 
 btnDesencriptar.addEventListener("click", (e)=>{
     e.preventDefault();
     var texto = inputTexto.value;
-    var desencriptado = desencriptar(texto);
+    var desencriptado = codificar(texto, claves, "desencriptar");
     msg.value = desencriptado;
 });
 
